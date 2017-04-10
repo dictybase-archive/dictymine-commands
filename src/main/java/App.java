@@ -11,7 +11,7 @@ import org.dictybase.properties.PropertiesWriter;
 
 
 public class App {
-    @Parameter(names="--help", help = true)
+    @Parameter(names={"--help", "-h"}, help = true)
     public boolean help;
 
 
