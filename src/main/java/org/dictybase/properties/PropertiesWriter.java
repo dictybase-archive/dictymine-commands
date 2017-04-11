@@ -39,7 +39,7 @@ public class PropertiesWriter {
                     break;
 
                 /*items temporary database configuration */
-                case "db.common-tg-items.datasource.serverName":
+                case "db.common-tgt-items.datasource.serverName":
                     config.setProperty("db.common-tgt-items.datasource.serverName", pc.host);
                     break;
                 case "db.common-tgt-items.datasource.databaseName":
