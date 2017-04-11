@@ -86,7 +86,7 @@ public class PropertiesWriter {
                     config.setProperty("webapp.password", pc.tpassword);
                     break;
                 case "webapp.baseurl":
-                    config.setProperty("webapp.deploy.url", pc.url);
+                    config.setProperty("webapp.baseurl", pc.url);
                     break;
 
                 default:
