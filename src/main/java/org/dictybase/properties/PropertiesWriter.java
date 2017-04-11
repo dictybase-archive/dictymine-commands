@@ -35,12 +35,12 @@ public class PropertiesWriter {
                     config.setProperty("db.production.datasource.password", pc.password);
                     break;
                 case "db.production.datasource.port":
-                    config.setProperty("config.production.datasource.port", pc.port);
+                    config.setProperty("db.production.datasource.port", pc.port);
                     break;
 
                 /*items temporary database configuration */
                 case "db.common-tg-items.datasource.serverName":
-                    config.setProperty("config.common-tgt-items.datasource.serverName", pc.host);
+                    config.setProperty("db.common-tgt-items.datasource.serverName", pc.host);
                     break;
                 case "db.common-tgt-items.datasource.databaseName":
                     config.setProperty("db.common-tgt-items.datasource.databaseName", pc.idatabase);
@@ -69,7 +69,7 @@ public class PropertiesWriter {
                     config.setProperty("db.userprofile-production.datasource.password", pc.password);
                     break;
                 case "db.userprofile-production.datasource.port":
-                    config.setProperty("config.userprofile-production.datasource.port", pc.port);
+                    config.setProperty("db.userprofile-production.datasource.port", pc.port);
                     break;
 
                 /*webapp configuration */
@@ -77,7 +77,7 @@ public class PropertiesWriter {
                     config.setProperty("webapp.deploy.url", "http://" + pc.thost + ":" + pc.tport);
                     break;
                 case "webapp.deploy.path":
-                    config.setProperty("config.deploy.path", pc.path);
+                    config.setProperty("webapp.deploy.path", pc.path);
                     break;
                 case "webapp.manager":
                     config.setProperty("webapp.manager", pc.manager);
