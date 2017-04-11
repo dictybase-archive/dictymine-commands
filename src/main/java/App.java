@@ -41,7 +41,7 @@ public class App {
         return new FileOutputStream(FileDescriptor.out);
     }
 
-    public static void main(String... args) {
+    public static void main(String... args) throws IOException {
         InputStream in = App.class.getResourceAsStream("intermine.properties");
         Properties config = new Properties();
         try {
@@ -55,7 +55,8 @@ public class App {
                 jc.usage();
                 return;
             }
-            switch (jc.getParsedCommand()) {
+            String cmd = jc.getParsedCommand();
+            switch (cmd) {
                 case "createproperties":
                     if (pc.help) {
                         jc.usage();
@@ -63,10 +64,11 @@ public class App {
                     }
                     PropertiesWriter.writeIntermineProperties(app.getWriter(pc), config, pc);
                 default:
-                    System.err.println("wrong command");
+                    LOGGER.log(Level.WARNING, "wrong command " + cmd);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.toString(), e);
+            throw e;
         }
     }
 }

@@ -6,7 +6,7 @@ import org.dictybase.validation.ValidateParameters;
 
 @Parameters(commandDescription = "create a mine specific intermine properties file")
 public class PropertyCommand {
-    @Parameter(description = "intermine database host, default INTERMINE_SERVICE_HOST", names = "--host", validateWith = ValidateParameters.class)
+    @Parameter(description = "intermine database host, default INTERMINE_SERVICE_HOST", names = "-host", validateWith = ValidateParameters.class)
     public String host = System.getenv("INTERMINE_SERVICE_HOST");
 
     @Parameter(names={"-db","--database"}, description = "intermine database, default INTERMINE_DB", validateWith = ValidateParameters.class)
@@ -33,7 +33,7 @@ public class PropertyCommand {
     @Parameter(names={"--tomcat-port", "-tport"}, description = "tomcat port, default from TOMCAT_SERVICE_PORT", validateWith = ValidateParameters.class)
     public String tport = System.getenv("TOMACAT_SERVICE_PORT");
 
-    @Parameter(names={"--path", "--webapp-path"}, description = "the patch suffix for the webapp access, default from INTERMINE_WEBAPP_PATH", validateWith = ValidateParameters.class)
+    @Parameter(names = {"-path", "--webapp-path"}, description = "the patch suffix for the webapp access, default from INTERMINE_WEBAPP_PATH", validateWith = ValidateParameters.class)
     public String path = System.getenv("INTERMINE_WEBAPP_PATH");
 
     @Parameter(names = "--webapp-url", description = "the public url in which the intermine webapp will be available, default from INTERMINE_WEBAPP_URL", validateWith = ValidateParameters.class)
@@ -45,9 +45,9 @@ public class PropertyCommand {
     @Parameter(names = {"--tomcat-password", "-tp"}, description = "tomcat manager password, default from TOMCAT_PASSWORD", validateWith = ValidateParameters.class)
     public String tpassword = System.getenv("TOMCAT_PASSWORD");
 
-    @Parameter(names={"-o","--out", "--output"}, description = "Output file name, default goes to stdout")
+    @Parameter(names = {"-o", "-out", "--output"}, description = "Output file name, default goes to stdout")
     public String output;
 
-    @Parameter(names="--help", help = true, validateWith = ValidateParameters.class)
+    @Parameter(names = {"--help", "-h",}, help = true, validateWith = ValidateParameters.class)
     public boolean help;
 }
