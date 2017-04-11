@@ -63,8 +63,10 @@ public class App {
                         return;
                     }
                     PropertiesWriter.writeIntermineProperties(app.getWriter(pc), config, pc);
+                    break;
                 default:
                     LOGGER.log(Level.WARNING, "wrong command " + cmd);
+                    break;
             }
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
