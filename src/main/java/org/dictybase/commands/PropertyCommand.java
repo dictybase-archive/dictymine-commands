@@ -48,6 +48,12 @@ public class PropertyCommand {
     @Parameter(names = {"-o", "-out", "--output"}, description = "Output file name, default goes to stdout")
     public String output;
 
+    @Parameter(names = {"-sa", "--superuser"}, description = "Superuser account for dictymine")
+    public String superuser = System.getenv("DICTYMINE_SUPERUSER");
+
+    @Parameter(names = {"-sp", "--superuser-pass"}, description = "Superuser password")
+    public String superpass = System.getenv("DICTYMINE_SUPER_PASS");
+
     @Parameter(names = {"--help", "-h",}, help = true, validateWith = ValidateParameters.class)
     public boolean help;
 }

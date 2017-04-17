@@ -88,6 +88,11 @@ public class PropertiesWriter {
                 case "webapp.baseurl":
                     config.setProperty("webapp.baseurl", pc.url);
                     break;
+                case "superuser.account":
+                    config.setProperty("superuser.account", pc.superuser);
+                    break;
+                case "superuser.initialPassword":
+                    config.setProperty("superuser.initialPassword", pc.superpass);
 
                 default:
                     config.setProperty(key, config.getProperty(key));
