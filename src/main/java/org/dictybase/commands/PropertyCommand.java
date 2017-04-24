@@ -6,7 +6,7 @@ import org.dictybase.validation.ValidateParameters;
 
 @Parameters(commandDescription = "create a mine specific intermine properties file")
 public class PropertyCommand {
-    @Parameter(description = "intermine database host, default INTERMINE_SERVICE_HOST", names = "-host", validateWith = ValidateParameters.class)
+    @Parameter(description = "intermine database host, default INTERMINE_SERVICE_HOST", names = "--host", validateWith = ValidateParameters.class)
     public String host = System.getenv("INTERMINE_SERVICE_HOST");
 
     @Parameter(names={"-db","--database"}, description = "intermine database, default INTERMINE_DB", validateWith = ValidateParameters.class)
@@ -27,25 +27,10 @@ public class PropertyCommand {
     @Parameter(description = "intermine users database name, default from INTERMINE_USERS_DB", names = {"-udb", "--users-database"}, validateWith = ValidateParameters.class)
     public String udatabase = System.getenv("INTERMINE_USERS_DB");
 
-    @Parameter(names={"--tomcat-host", "-th"}, description = "tomcat host, default from TOMCAT_SERVICE_HOST", validateWith = ValidateParameters.class)
-    public String thost = System.getenv("TOMCAT_SERVICE_HOST");
-
-    @Parameter(names={"--tomcat-port", "-tport"}, description = "tomcat port, default from TOMCAT_SERVICE_PORT", validateWith = ValidateParameters.class)
-    public String tport = System.getenv("TOMACAT_SERVICE_PORT");
-
-    @Parameter(names = {"-path", "--webapp-path"}, description = "the patch suffix for the webapp access, default from INTERMINE_WEBAPP_PATH", validateWith = ValidateParameters.class)
-    public String path = System.getenv("INTERMINE_WEBAPP_PATH");
-
     @Parameter(names = "--webapp-url", description = "the public url in which the intermine webapp will be available, default from INTERMINE_WEBAPP_URL", validateWith = ValidateParameters.class)
     public String url = System.getenv("INTERMINE_WEBAPP_URL");
 
-    @Parameter(names = {"--tomcat-manager", "-tm"}, description = "tomcat manager user name, default from TOMCAT_MANAGER", validateWith = ValidateParameters.class)
-    public String manager = System.getenv("TOMCAT_MANAGER");
-
-    @Parameter(names = {"--tomcat-password", "-tp"}, description = "tomcat manager password, default from TOMCAT_PASSWORD", validateWith = ValidateParameters.class)
-    public String tpassword = System.getenv("TOMCAT_PASSWORD");
-
-    @Parameter(names = {"-o", "-out", "--output"}, description = "Output file name, default goes to stdout")
+    @Parameter(names = {"-o", "--output"}, description = "Output file name, default goes to stdout")
     public String output;
 
     @Parameter(names = {"-sa", "--superuser"}, description = "Superuser account for dictymine")

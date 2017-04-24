@@ -73,18 +73,6 @@ public class PropertiesWriter {
                     break;
 
                 /*webapp configuration */
-                case "webapp.deploy.url":
-                    config.setProperty("webapp.deploy.url", "http://" + pc.thost + ":" + pc.tport);
-                    break;
-                case "webapp.deploy.path":
-                    config.setProperty("webapp.deploy.path", pc.path);
-                    break;
-                case "webapp.manager":
-                    config.setProperty("webapp.manager", pc.manager);
-                    break;
-                case "webapp.password":
-                    config.setProperty("webapp.password", pc.tpassword);
-                    break;
                 case "webapp.baseurl":
                     config.setProperty("webapp.baseurl", pc.url);
                     break;
