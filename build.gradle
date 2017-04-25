@@ -42,7 +42,7 @@ dependencies {
 
 cargo {
     containerId = 'jetty9x'
-    port = System.getenv("DICTYMINE_JETTY_SERVICE_PORT")
+    port = System.getenv("DICTYMINE_JETTY_SERVICE_PORT") != null ? System.getenv("DICTYMINE_JETTY_SERVICE_PORT").toInteger() : 8080
 
     deployable {
         file = file('/intermine/dictymine/webapps/dist/dictymine-webapp.war')
