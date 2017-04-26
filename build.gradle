@@ -45,12 +45,14 @@ cargo {
     port = System.getenv("DICTYMINE_JETTY_SERVICE_PORT") != null ? System.getenv("DICTYMINE_JETTY_SERVICE_PORT").toInteger() : 8080
 
     deployable {
-        file = file('/intermine/dictymine/webapps/dist/dictymine-webapp.war')
+        file = file('/intermine/dictymine/webapp/dist/dictymine-webapp.war')
         context = 'dictymine'
     }
 
     remote {
         hostname = System.getenv("DICTYMINE_JETTY_SERVICE_HOST")
+        username = 'user'
+        password = 'password'
     }
 }
 
