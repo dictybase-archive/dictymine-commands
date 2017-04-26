@@ -1,6 +1,7 @@
 package org.dictybase.properties;
 
-import org.dictybase.commands.PropertyCommand;
+import org.dictybase.commands.BuildPropertyCommand;
+import org.dictybase.commands.TargetPropertyCommand;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,13 +11,67 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-/**
- * Created by cybersiddhu on 4/9/17.
- */
 public class PropertiesWriter {
     private static final Logger LOGGER = Logger.getLogger(PropertiesWriter.class.getSimpleName());
 
-    public static void writeIntermineProperties(OutputStream out, Properties config, PropertyCommand pc) {
+    public static void writeTargetIntermineProperties(OutputStream out, Properties config, TargetPropertyCommand tc) {
+        Enumeration en = config.propertyNames();
+        while (en.hasMoreElements()) {
+            String key = (String) en.nextElement();
+            switch (key) {
+                /*production database configuration */
+                case "db.production.datasource.serverName":
+                    config.setProperty("db.production.datasource.serverName", tc.host);
+                    break;
+                case "db.production.datasource.databaseName":
+                    config.setProperty("db.production.datasource.databaseName", tc.database);
+                    break;
+                case "db.production.datasource.user":
+                    config.setProperty("db.production.datasource.user", tc.user);
+                    break;
+                case "db.production.datasource.password":
+                    config.setProperty("db.production.datasource.password", tc.password);
+                    break;
+                case "db.production.datasource.port":
+                    config.setProperty("db.production.datasource.port", tc.port);
+                    break;
+
+                /*users database configuration */
+                case "db.userprofile-production.datasource.serverName":
+                    config.setProperty("db.userprofile-production.datasource.serverName", tc.host);
+                    break;
+                case "db.userprofile-production.datasource.databaseName":
+                    config.setProperty("db.userprofile-production.datasource.databaseName", tc.udatabase);
+                    break;
+                case "db.userprofile-production.datasource.user":
+                    config.setProperty("db.userprofile-production.datasource.user", tc.user);
+                    break;
+                case "db.userprofile-production.datasource.password":
+                    config.setProperty("db.userprofile-production.datasource.password", tc.password);
+                    break;
+                case "db.userprofile-production.datasource.port":
+                    config.setProperty("db.userprofile-production.datasource.port", tc.port);
+                    break;
+
+                /*webapp configuration */
+                case "webapp.baseurl":
+                    if (tc.url == null || tc.url.trim().isEmpty()) {
+                        config.setProperty("webapp.baseurl", "http://localhost:8080");
+                    } else {
+                        config.setProperty("webapp.baseurl", tc.url);
+                    }
+                    break;
+                case "webapp.path":
+                    config.setProperty("webapp.path", tc.path);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    public static void writeBuildIntermineProperties(OutputStream out, Properties config, BuildPropertyCommand pc) {
         Enumeration en = config.propertyNames();
         while (en.hasMoreElements()) {
             String key = (String) en.nextElement();
@@ -73,17 +128,12 @@ public class PropertiesWriter {
                     break;
 
                 /*webapp configuration */
-                case "webapp.baseurl":
-                    config.setProperty("webapp.baseurl", pc.url);
-                    break;
                 case "superuser.account":
                     config.setProperty("superuser.account", pc.superuser);
                     break;
                 case "superuser.initialPassword":
                     config.setProperty("superuser.initialPassword", pc.superpass);
-
                 default:
-                    config.setProperty(key, config.getProperty(key));
                     break;
             }
         }
